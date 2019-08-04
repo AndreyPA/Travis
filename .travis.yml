@@ -55,7 +55,7 @@ notifications:
   email: andrey@uma.ru
 
 after_success:
-  - chmod +x _scripts/deploy.sh
-  - _scripts/deploy.sh
+  - chmod +x ./_scripts/deploy.sh
+  - ./_scripts/deploy.sh
   
   
