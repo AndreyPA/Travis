@@ -54,5 +54,5 @@ notifications:
   email: andrey@uma.ru
 
 after_success:
-  "curl --upload-file -u $FTP_USER:$FTP_PASSWORD ftp://www.uma.ru/www/"
+  - curl --upload-file -u $FTP_USER:$FTP_PASSWORD ftp://www.uma.ru/www/
   
