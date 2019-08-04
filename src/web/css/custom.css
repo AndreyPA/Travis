@@ -1,0 +1,11 @@
+.left {
+    position: relative;
+    float: left;
+    margin-left: 30px;
+}
+
+#msgResponse {
+    width: 350px;
+    padding: 10px;
+    color: red;
+}
