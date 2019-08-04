@@ -22,22 +22,21 @@ php:
 
 # optionally specify a list of environments, for example to test different RDBMS
 env:
-  - DB=pgsql
+#  - DB=pgsql
 
 # optionally set up exclusions and allowed failures in the matrix
 matrix:
   exclude:
     - php: hhvm
-      env: DB=pgsql  # PDO driver for pgsql is unsupported by HHVM (3rd party install for support)
+#      env: DB=pgsql  # PDO driver for pgsql is unsupported by HHVM (3rd party install for support)
   allow_failures:
-    - php: 7.0
+    - php: 7.1
     - php: hhvm
 
 # execute any number of scripts before the test run, custom env's are available as variables
 before_script:
-#  - if [[ "$DB" == "pgsql" ]]; then psql -c "DROP DATABASE IF EXISTS hello_world_test;" -U postgres; fi
-#  - if [[ "$DB" == "pgsql" ]]; then psql -c "create database hello_world_test;" -U postgres; fi
-#  - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS hello_world_test;" -uroot; fi
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
 
 # omitting "script:" will default to phpunit
 # use the $DB env variable to determine the phpunit.xml to use
@@ -47,4 +46,9 @@ before_script:
 notifications:
 #  irc: "irc.freenode.org#yourfavouriteroomfortravis"
     email: andrey@uma.ru
-    
+
+install:
+  - composer install
+  - apt-get install docker
+  
+     
