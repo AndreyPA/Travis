@@ -37,9 +37,11 @@ matrix:
 
 # execute any number of scripts before the test run, custom env's are available as variables
 before_script:
-  - composer self-update
-  - composer install --prefer-source --no-interaction --dev
-
+  - apt-get install docker 
+  - sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+  - sudo chmod +x /usr/local/bin/docker-compose
+  - ./run
+  
 # omitting "script:" will default to phpunit
 # use the $DB env variable to determine the phpunit.xml to use
 #script: phpunit --configuration phpunit_$DB.xml --coverage-text
@@ -49,8 +51,4 @@ notifications:
 #  irc: "irc.freenode.org#yourfavouriteroomfortravis"
     email: andrey@uma.ru
 
-install:
-  - composer install
-  - apt-get install docker
-  
      
