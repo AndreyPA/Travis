@@ -55,5 +55,5 @@ notifications:
   email: andrey@uma.ru
 
 after_success:
-  - ncftpput put -R -v -u "$USERNAME" -p "$PASSWORD" "$HOST" . ./www
+  - ncftpput -R -v -u "$USERNAME" -p "$PASSWORD" "$HOST" . ./www
   
