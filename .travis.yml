@@ -19,9 +19,7 @@ php:
   #- 7.0
   # aliased to a recent 7.1 version
   - 7.1
-  # aliased to a recent 7.2 version
-  - 7.2
-  # aliased to a recent hhvm version
+  # aliased to a recent 7.0 version
   - hhvm
 
 # optionally specify a list of environments, for example to test different RDBMS
@@ -39,7 +37,9 @@ matrix:
 
 # execute any number of scripts before the test run, custom env's are available as variables
 before_script:
-  - sudo apt-get install docker 
+  - sudo apt install docker.io
+  - sudo systemctl start docker
+  - sudo systemctl enable docker
   - sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
   - sudo chmod +x /usr/local/bin/docker-compose
   - ./run
