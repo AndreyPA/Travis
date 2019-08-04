@@ -43,7 +43,7 @@ before_script:
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
   - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   - sudo chmod +x /usr/local/bin/docker-compose
-  - ./run
+  - sudo docker-compose up --build -d
   
 # omitting "script:" will default to phpunit
 # use the $DB env variable to determine the phpunit.xml to use
