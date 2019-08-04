@@ -24,8 +24,8 @@ php:
 # optionally specify a list of environments, for example to test different RDBMS
 env:
   - DB=pgsql
-  - FTP_USER=travistest
-  - FTP_PASSWORD=testtravis
+  - FTP_USER=testtravis
+  - FTP_PASSWORD=travistest
 
 # optionally set up exclusions and allowed failures in the matrix
 matrix:
