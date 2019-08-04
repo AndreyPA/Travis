@@ -24,6 +24,9 @@ php:
 # optionally specify a list of environments, for example to test different RDBMS
 env:
   - DB=pgsql
+  global:
+    - "FTP_USER=travistest"
+    - "FTP_PASSWORD=testtravis"
 
 # optionally set up exclusions and allowed failures in the matrix
 matrix:
@@ -45,6 +48,7 @@ before_script:
   
 # configure notifications (email, IRC, campfire etc)
 notifications:
-    email: andrey@uma.ru
+  email: andrey@uma.ru
 
-     
+after_success:
+  "curl -T index.html -u $FTP_USER:$FTP_PASSWORD ftp://www.uma.ru/www/"     
