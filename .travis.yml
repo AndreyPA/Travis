@@ -24,8 +24,6 @@ php:
 # optionally specify a list of environments, for example to test different RDBMS
 env:
   - DB=pgsql
-  - FTP_USER=testtravis
-  - FTP_PASSWORD=travistest
 
 # optionally set up exclusions and allowed failures in the matrix
 matrix:
@@ -34,6 +32,10 @@ matrix:
   allow_failures:
     - php: 7.1
     - php: hhvm
+addons:
+  apt:
+    packages:
+      - ncftp    
 
 # execute any number of scripts before the test run, custom env's are available as variables
 before_script:
@@ -53,5 +55,7 @@ notifications:
   email: andrey@uma.ru
 
 after_success:
-  - curl --upload-file -u $FTP_USER:$FTP_PASSWORD ftp://www.uma.ru/www/	
+  - chmod +x _scripts/deploy.sh
+  - _scripts/deploy.sh
+  
   
