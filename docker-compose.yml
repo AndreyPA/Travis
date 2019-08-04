@@ -17,12 +17,13 @@ services:
 
   php:
     image: php:7.1-fpm
+    container_name: php
     restart: on-failure
     build: ./docker/Dockerfiles/php/.
     working_dir: /usr/share/nginx/html
     volumes:
       - ./:/usr/share/nginx/html
-    command: bash -c "php-fpm -D && /usr/share/nginx/html/src/console/RabbitListener.sh"
+#    command: bash -c "php-fpm -D && /usr/share/nginx/html/src/console/RabbitListener.sh"
     ports:
       - 9000:9000
     depends_on:

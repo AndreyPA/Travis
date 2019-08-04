@@ -1,2 +1,4 @@
 # Create builds and start
 docker-compose up --build -d
+sleep 20s
+docker exec -it 'php' composer install
