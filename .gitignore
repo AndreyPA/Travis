@@ -2,4 +2,3 @@ vendor
 postgres
 data
 composer.lock
-run
